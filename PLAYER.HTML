@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MI REPRODUCTOR</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <div class ="container">
+        <h1> REPRODUCTOR</h1>
+        <img src="IMG/musicplaye_9qcja2mc.gif" alt="">
+    
+    <script>
+        function cambiarTrack(track) {
+            var path= track.getAttribute("path")
+            viejo_audio= document.getElementById("Reproductor")
+            audio_padre= viejo_audio.parentNode
+            audio_padre= removeChild(viejo_audio)
+            nuevo_audio= document.createElement("audio")
+            nuevo_audio.setAttribute("id","Reproductor")
+            nuevo_audio.setAttribute("controls", "controls")
+            nuevo_audio.setAttribute("autoplay", "autoplay")
+            source= document.createElement("source")
+            source.setAttribute("src", path)
+            source.setAttribute("type","audio/mpeg")
+            source.setAttribute("id","ReproductorSource")
+            nuevo_audio.appendChild(source)
+            audio_padre.appendChild(nuevo_audio)
+
+            }
+            function cargarReproductor(){
+                var select= document.getElementById("selectTrack")
+                var path= select.options [0].getAttribute("path")
+                nuevo_audio= document.createElement("audio")
+                nuevo_audio.setAttribute("id", "Reproductor")
+                nuevo_audio.setAttribute("controls", "controls")
+                source= document.createElement("source")
+                source.setAttribute("src", path)
+                source.setAttribute("type", "audio/mpeg")
+                source.setAttribute("id", "ReproductorSource")
+                nuevo_audio.appendChild(source)
+                padre = document.getElementById("ReproductorBox")
+                padre.appendChild(nuevo_audio)
+
+
+            }
+        
+    </script>
+    <div id="ReproductorBox">
+    <select id="selectTrack" multiple onchange="cambioTrack(this.options[this.selectedIndex]);">
+        <option path="musica/bulin.mp3">Bulin-Comando</option>
+        <option path="musica/lapiz.mp3">Lapiz-Mami</option>
+        <option path="musica/fuck.mp3">Go fuck yourself</option>
+        <option path="musica/caile.mp3">CAILE</option>
+    </div>
+    
+    <script>
+        cargarReproductor();
+    
+    </script>
+    </div>
+</body>
+</html>
